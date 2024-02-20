@@ -19,6 +19,7 @@ services:
            - "traefik.http.routers.app_teste.rule=Host(`testeinternal.onlyonemp.com.br`)"
            - "traefik.http.routers.app_teste.entrypoints=web"
            - "traefik.http.services.app_teste.loadbalancer.server.port=3050"
+           - "traefik.docker.network=treaefik_public"
     networks:
         - traefik_public
 
