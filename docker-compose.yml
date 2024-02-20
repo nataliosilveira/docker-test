@@ -22,7 +22,11 @@ services:
            - "traefik.docker.network=treaefik_public"
     networks:
         - traefik_public
+        - agent_network
 
 networks:
   traefik_public:
+    external: true
+    attachable: true
+  agent_network:
     external: true
