@@ -24,6 +24,4 @@ services:
           
              
     
-networks:
-  traefik_public:
-    external: true
+
