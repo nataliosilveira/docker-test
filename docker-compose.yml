@@ -18,7 +18,7 @@ services:
            #SSL
            - "traefik.http.routers.app_teste.rule=Host(`testeinternal.onlyonemp.com.br`)"
            - "traefik.http.routers.app_teste.entrypoints=web"
-           - "traefik.http.services.app_teste.loadbalancer.server.port=3000"
+           - "traefik.http.services.app_teste.loadbalancer.server.port=3050"
           
              
     
