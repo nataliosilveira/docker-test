@@ -11,6 +11,8 @@ services:
       - NODE_ENV=production
     volumes:
       - .:/app
+    networks:
+      - traefik_public
     command: npm start
     deploy:
       labels:
@@ -22,9 +24,8 @@ services:
            - "traefik.http.routers.app_teste.tls.certresolver=le"
            - "traefik.http.routers.app_teste.entrypoints=websecure"
            - "traefik.http.routers.app_teste.tls=true"
-    networks:
-      - traefik_public
+    
     
 networks:
   traefik_public:
-    #external: true
+    external: true
