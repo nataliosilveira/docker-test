@@ -22,10 +22,10 @@ services:
            - "traefik.docker.network=traefik_public"
     networks:
         - traefik_public
-        - agent_network
+        - app_network
 
 networks:
   traefik_public:
     external: true
-  agent_network:
+  app_network:
     external: true
