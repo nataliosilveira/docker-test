@@ -12,3 +12,21 @@ services:
     volumes:
       - .:/app
     command: npm start
+    labels:
+           - "traefik.enable=true"
+           #SSL
+           - "traefik.http.routers.app.rule=Host(`testeinternal.onlyonemp.com.br`)"
+           - "traefik.http.services.app.loadbalancer.server.port=3000"
+           - "traefik.http.routers.app.service=app_teste"
+           - "traefik.http.routers.app.tls.certresolver=le"
+           - "traefik.http.routers.app.entrypoints=websecure"
+           - "traefik.http.routers.app.tls=true"
+      restart_policy:
+        condition: on-failure
+    networks:
+        - traefik_public
+    
+
+networks:
+  traefik_public:
+    external: true
