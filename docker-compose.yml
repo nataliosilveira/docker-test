@@ -19,12 +19,10 @@ services:
            - "traefik.enable=true"
            #SSL
            - "traefik.http.routers.app_teste.rule=Host(`testeinternal.onlyonemp.com.br`)"
+           - "traefik.http.routers.app_teste.entrypoints=web"
            - "traefik.http.services.app_teste.loadbalancer.server.port=3000"
-           - "traefik.http.routers.app_teste.service=app_teste"
-           - "traefik.http.routers.app_teste.tls.certresolver=le"
-           - "traefik.http.routers.app_teste.entrypoints=websecure"
-           - "traefik.http.routers.app_teste.tls=true"
-    
+          
+             
     
 networks:
   traefik_public:
