@@ -27,6 +27,5 @@ services:
 networks:
   traefik_public:
     external: true
-    attachable: true
   agent_network:
     external: true
