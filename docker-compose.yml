@@ -21,7 +21,7 @@ services:
            - "traefik.http.routers.app.tls.certresolver=le"
            - "traefik.http.routers.app.entrypoints=websecure"
            - "traefik.http.routers.app.tls=true"
-      restart_policy:
+    restart_policy:
         condition: on-failure
     networks:
         - traefik_public
