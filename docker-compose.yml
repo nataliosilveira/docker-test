@@ -10,9 +10,7 @@ services:
     environment:
       - NODE_ENV=production
     volumes:
-      - .:/app
-    networks:
-      - traefik_public
+      - .:/app    
     command: npm start
     deploy:
       labels:
