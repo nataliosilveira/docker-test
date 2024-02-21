@@ -1,23 +1,16 @@
-# Use a imagem oficial do Node.js como base
-FROM node:18
+# Stage 1: Build the React application
+FROM node:18 AS build
 
-# Crie e defina o diretório de trabalho dentro do contêiner
 WORKDIR /app
-
-# Copie o arquivo package.json e o arquivo package-lock.json (se existir)
 COPY package*.json ./
-
-# Instale as dependências do Node.js
 RUN npm install
-
-# Copie todos os arquivos da aplicação para o diretório de trabalho no contêiner
-COPY . .
-
-# Construa a aplicação React (se necessário, você pode substituir este comando pelo script apropriado)
+COPY . ./
 RUN npm run build
 
-# Exponha a porta em que a aplicação irá ser executada (geralmente a porta 3000 para aplicações React)
-EXPOSE 3000
+# Stage 2: Serve the React application with Nginx
+FROM nginx:alpine
 
-# Comando para iniciar a aplicação quando o contêiner for iniciado
-CMD ["npm", "start"]
+COPY --from=build /app/build /usr/share/nginx/html
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
